@@ -13,7 +13,7 @@
 FROM alpine:3.5
 
 ARG username=idris
-ARG idris=0.99.2
+ARG idris=1.0
 
 MAINTAINER oleks <oleks@oleks.info>
 

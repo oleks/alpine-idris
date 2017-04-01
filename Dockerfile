@@ -13,11 +13,9 @@
 FROM alpine:3.5
 
 ARG username=idris
-ARG name=oleks
-ARG email=oleks@oleks.info
 ARG idris=0.99.2
 
-MAINTAINER ${name} <${email}>
+MAINTAINER oleks <oleks@oleks.info>
 
 RUN apk --no-cache add alpine-sdk
 

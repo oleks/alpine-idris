@@ -17,13 +17,14 @@ ARG idris=1.0
 
 MAINTAINER oleks <oleks@oleks.info>
 
-RUN apk --no-cache add alpine-sdk
-
 RUN \
   echo http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     >> /etc/apk/repositories
 
-RUN apk --no-cache add zlib-dev ncurses-dev ghc cabal
+RUN apk --no-cache add \
+  --virtual .build-dependencies \
+  alpine-sdk \
+  zlib-dev ncurses-dev ghc cabal
 
 RUN adduser -D -u 1000 ${username}
 USER ${username}
@@ -34,8 +35,14 @@ RUN \
   wget https://github.com/idris-lang/Idris-dev/archive/v${idris}.zip && \
   unzip *.zip && rm *.zip
 
-RUN cd Idris-dev* && cabal update && make
+RUN cd Idris-dev* && cabal update && make && cd .. && rm -rf Idris-dev*
 
 ENV PATH=/home/${username}/.cabal/bin:$PATH
+
+USER root
+
+RUN apk del .build-dependencies
+
+USER ${username}
 
 CMD ["idris"]

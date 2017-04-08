@@ -22,9 +22,12 @@ RUN \
     >> /etc/apk/repositories
 
 RUN apk --no-cache add \
+  gmp-dev libffi-dev ncurses-dev
+
+RUN apk --no-cache add \
   --virtual .build-dependencies \
   alpine-sdk \
-  zlib-dev ncurses-dev ghc cabal
+  zlib-dev ghc cabal
 
 RUN adduser -D -u 1000 ${username}
 USER ${username}

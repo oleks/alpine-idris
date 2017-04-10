@@ -22,7 +22,9 @@ RUN \
     >> /etc/apk/repositories
 
 RUN apk --no-cache add \
-  gmp-dev libffi-dev ncurses-dev
+  gmp-dev libffi-dev ncurses-dev \
+  gcc
+
 
 RUN apk --no-cache add \
   --virtual .build-dependencies \

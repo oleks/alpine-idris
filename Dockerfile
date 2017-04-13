@@ -23,11 +23,6 @@ RUN \
 
 RUN apk --no-cache add \
   gmp-dev libffi-dev ncurses-dev \
-  gcc
-
-
-RUN apk --no-cache add \
-  --virtual .build-dependencies \
   alpine-sdk \
   zlib-dev ghc cabal
 
@@ -45,8 +40,6 @@ RUN cd Idris-dev* && cabal update && make && cd .. && rm -rf Idris-dev*
 ENV PATH=/home/${username}/.cabal/bin:$PATH
 
 USER root
-
-RUN apk del .build-dependencies
 
 USER ${username}
 

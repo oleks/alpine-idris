@@ -23,7 +23,7 @@ RUN \
 
 RUN apk --no-cache add \
   gmp-dev libffi-dev ncurses-dev \
-  alpine-sdk \
+  alpine-sdk musl-dev \
   zlib-dev ghc cabal
 
 RUN adduser -D -u 1000 ${username}

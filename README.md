@@ -12,7 +12,9 @@ installed, you can whip up an Idris prompt merely as follows:
 
 This is also a minimal image (due to using [alpine
 linux](https://alpinelinux.org)), so it may be suitable for the automated,
-lightweight testing of your Idris projects.
+lightweight testing of your Idris projects. To this end, you might want to
+always use a particularly tagged version of the image. For instance,
+`oleks2/alpine-idris:1.0_0.5`.
 
 ## Versioning
 
